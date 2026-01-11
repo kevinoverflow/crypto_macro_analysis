@@ -1,18 +1,21 @@
 \documentclass[ngerman]{tudscrreprt}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern} 
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{babel}
+\usepackage[ngerman]{babel}
 \usepackage[math]{blindtext}
 \usepackage{csquotes}
 
 \usepackage[
     backend=biber,
-    style=alphabetic,
+    style=apa,
     sorting=nyt
 ]{biblatex}
-
 \addbibresource{references.bib}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \begin{document}
 
@@ -35,37 +38,20 @@
 \maketitle
 \tableofcontents
 
-\chapter{Einleitung}
-\blindtext[3]
-
-\chapter{Theoretischer Hintergrund}
-\section{Kryptowährungen als Finanzmarktsegment}
-\section{Ausgewählte makroökonomische Variablen}
-
-\chapter{Daten und Methodik}
-\section{Datengrundlage}
-\section{Tools und Software}
-\subsection{Python}
-\subsection{R}
-
-\chapter{Empirische Analyse}
-\section{Deskriptive Statistik}
-\section{Zeitreihenanalyse}
-\section{Stationartätstests}
-\section{Regressionsanalyse}
-
-\chapter{Fazit}
-\section{Limitationen}
-\section{Ausblick}
+\include{Einleitung}
+\include{Theoretischer-Hintergrund}
+\include{Daten-und-Methodik}
+\include{Empirische-Analyse}
+\include{Fazit}
 
 \chapter{Literaturzeichnis}
 \chapter{Anhang}
 
 % ---- Gesetzt mit LaTeX Hinweis ----
-%\vfill
-%\begin{center}
-% Gesetzt mit {\fontfamily{lmr}\selectfont\textit{\LaTeX}}
-%\end{center}
+\vfill
+\begin{center}
+    {Gesetzt mit \fontfamily{lmr}\fontseries{m}\fontshape{n}\selectfont{\LaTeX}}
+\end{center}
 
 \confirmation
 
