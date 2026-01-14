@@ -9,13 +9,26 @@
 \usepackage[
     backend=biber,
     style=apa,
-    sorting=nyt
+    natbib=true
 ]{biblatex}
 \addbibresource{references.bib}
 
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{xcolor}
+
+\AtEveryCite{\itshape}
+\AtEveryCitekey{\color{black!70}}
+\usepackage{setspace}
+
+\KOMAoptions{DIV=11}
+\recalctypearea
+
+\setstretch{1.1}
+\emergencystretch=3em
+\lefthyphenmin=4
+\righthyphenmin=4
 
 \begin{document}
 
@@ -44,7 +57,8 @@
 \include{Empirische-Analyse}
 \include{Fazit}
 
-\chapter{Literaturzeichnis}
+\printbibliography[title={Literaturverzeichnis}]
+
 \chapter{Anhang}
 
 % ---- Gesetzt mit LaTeX Hinweis ----
