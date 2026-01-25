@@ -1,27 +1,28 @@
 \documentclass[ngerman]{tudscrreprt}
+
 \usepackage[utf8]{inputenc}
-\usepackage{lmodern} 
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage[ngerman]{babel}
 \usepackage[math]{blindtext}
 \usepackage{csquotes}
-\usepackage{lettrine}
+\usepackage{listings}
 
 \usepackage[
     backend=biber,
     style=apa,
     natbib=true
 ]{biblatex}
-\addbibresource{references.bib}
+\addbibresource{Literaturverzeichnis.bib}
 
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{xcolor}
+\usepackage{setspace}
 
 \AtEveryCite{\itshape}
 \AtEveryCitekey{\color{black!70}}
-\usepackage{setspace}
 
 \KOMAoptions{DIV=11}
 \recalctypearea
@@ -58,9 +59,11 @@
 \include{Empirische-Analyse}
 \include{Fazit}
 
-\printbibliography[title={Literaturverzeichnis}]
+\appendix
+\include{Anhang}
 
-% ---- Gesetzt mit LaTeX Hinweis ----
+\printbibliography[title={Literaturverzeichnis}, heading=bibintoc]
+
 \vfill
 \begin{center}
     {Gesetzt mit \fontfamily{lmr}\fontseries{m}\fontshape{n}\selectfont{\LaTeX}}
