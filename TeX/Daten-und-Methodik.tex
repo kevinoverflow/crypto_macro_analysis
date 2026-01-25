@@ -1,5 +1,21 @@
 \chapter{Daten und Methodik}
+
 \section{Datengrundlage}
+
+Die empirische Analyse basiert auf Zeitreihendaten für den Zeitraum vom 1.~Januar~2015 bis zum 31.~Dezember~2025. Dieser Zeitraum erlaubt es, sowohl frühe Marktphasen von Kryptowährungen als auch deren zunehmende Etablierung als Finanzmarktinstrument abzubilden. Zudem umfasst er zahlreiche internationale sowie wirtschafts- und geldpolitische Ereignisse, die für die Analyse potenzieller Zusammenhänge besonders interessant sind.
+
+Die makroökonomischen Daten stammen aus der Datenbank Federal Reserve Economic Data (FRED), die von der Federal Reserve Bank of St.~Louis bereitgestellt wird. Die Preiszeitreihen von Bitcoin, Ethereum sowie des S\&P~500 werden aus Yahoo Finance bezogen. Für alle Finanzmarktvariablen werden die jeweiligen Schlusskurse verwendet.
+
+Zur Sicherstellung der Vergleichbarkeit werden sämtliche Zeitreihen auf eine einheitliche Frequenz aggregiert und zeitlich synchronisiert. Fehlende Beobachtungen werden entsprechend behandelt. Weitere Datenaufbereitungen, insbesondere die Berechnung von Renditen und Transformationen der Zeitreihen, erfolgen im Rahmen der empirischen Analyse.
+
+Das Python-Skript zur Datenbeschaffung ist im Anhang aufgeführt (vgl. Listing~\ref{lst:fetch_and_store_data}).
+
 \section{Tools und Software}
-\subsection{Python}
-\subsection{R}
+
+Die Datenanalyse erfolgt mithilfe der Programmiersprache Python und wird in Jupyter Notebooks durchgeführt. Für die Datenaufbereitung kommen die Bibliotheken \texttt{pandas} und \texttt{numpy} zum Einsatz, während statistische Analysen und Regressionsmodelle mit \texttt{statsmodels} geschätzt werden. Grafische Darstellungen werden mit \texttt{matplotlib} erstellt.
+
+\section{Methodik}
+
+Die empirische Untersuchung folgt einem zeitreihenanalytischen Ansatz und orientiert sich in ihrem grundlegenden Vorgehen an der Studie von \citet{Baur2018}. Die betrachteten Finanzmarktvariablen werden so aufbereitet, dass sie für eine empirische Analyse geeignet sind und miteinander vergleichbar gemacht werden.
+
+Im Anschluss erfolgt eine deskriptive Auswertung der Daten. Darauf aufbauend werden geeignete Regressionsmodelle geschätzt, um mögliche Zusammenhänge zwischen makroökonomischen Einflussfaktoren und der Preisentwicklung von Kryptowährungen zu untersuchen. Der Fokus liegt dabei auf Bitcoin, während Ethereum ergänzend zur Überprüfung der Robustheit der Ergebnisse herangezogen wird.
