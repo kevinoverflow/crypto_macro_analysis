@@ -16,6 +16,29 @@ Hier werden die aufbereiteten Daten deskriptiv ausgewertet um einen Überblick �
     \input{../src/tables/descriptive_statistics.tex}
 \end{table}
 
+Die Werte aus der Tabelle \ref{tab:deskriptiv} zeigen, eine höhere Volatilität von Kryptowährungen im Vergleich zu traditionellen Anlageklassen wie dem S\&P~500. Bitcoin und Ethereum weisen deutlich höhere Streuungen und Extremwerte auf, während US-Dollar, Inflation, Geldmengenwachstum und Zinssätze im Vergleich stabiler erscheinen.
+
+
 \section{Zeitreihenanalyse}
+Die Zeitreihenanalyse untersucht die zeitliche Entwicklung verschiedener Variablen. Grafische Darstellungen helfen z.B. um Trends, strukturelle Änderungen oder auffälige Marktphasen zu finden.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{../src/figures/btc_vs_sp500_returns.pdf}
+    \caption{Bitcoin vs. S\&P~500 Renditen (2015-2025)}
+    \label{fig:btc_vs_sp500_returns}
+\end{figure}
+
+Der Graph von \ref{fig:btc_vs_sp500_returns} zeigt die monatlichen logarithmischen Renditen von Bitcoin und dem S\&P~500 im Vergleich. Die Renditen von Bitcoin zeigen deutlich stärkere Schwankungen als die vom S\&P~500. Außerdem gibt es bei Bitcoin besonders hohe positive sowie negative Ausschläge. Im Gegensatz dazu verzeichnet der S\&P~500 überwiegend positive Renditen mit geringerer Volatilität. Dies deutet auf eine insgesamt hohe Volatilität von Bitcoin hin. Ein langfristiger Trend lässt sich in den dargestellten Renditen jedoch nicht erkennen.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{../src/figures/fedfunds_inflation.pdf}
+    \caption{Zinsen und Inflation (2015-2025)}
+    \label{fig:fedfunds_inflation}
+\end{figure}
+
+Der Graph von \ref{fig:fedfunds_inflation} stellt die Entwicklung der US-amerikanischen Zinssätze sowie der Inflationsrate im Zeitraum von 2015 bis 2025 dar. Die Zinssätze verbleiben bis etwa 2021 auf einem sehr niedrigen Niveau, bevor ab dem Jahr 2022 ein deutlicher und schneller Anstieg zu beobachten ist, der in den Folgejahren auf einem hohen Niveau bleibt. Die Inflationsrate zeigt im Vergleich dazu stärkere kurzfristige Schwankungen, mit einem starken Rückgang im Jahr 2020 sowie einem ausgeprägten Anstieg in den Jahren 2021 und 2022. In den darauffolgenden Jahren ist ein Rückgang der Inflationsrate erkennbar.
+
 \section{Stationaritätstests}
 \section{Regressionsanalyse}
