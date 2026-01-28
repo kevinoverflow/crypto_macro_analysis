@@ -41,7 +41,7 @@ Der Graph von \ref{fig:btc_vs_sp500_returns} zeigt die monatlichen logarithmisch
 Der Graph von \ref{fig:fedfunds_inflation} stellt die Entwicklung der US-amerikanischen Zinssätze sowie der Inflationsrate im Zeitraum von 2015 bis 2025 dar. Die Zinssätze verbleiben bis etwa 2021 auf einem sehr niedrigen Niveau, bevor ab dem Jahr 2022 ein deutlicher und schneller Anstieg zu beobachten ist, der in den Folgejahren auf einem hohen Niveau bleibt. Die Inflationsrate zeigt im Vergleich dazu stärkere kurzfristige Schwankungen, mit einem starken Rückgang im Jahr 2020 sowie einem ausgeprägten Anstieg in den Jahren 2021 und 2022. In den darauffolgenden Jahren ist ein Rückgang der Inflationsrate erkennbar.
 
 \section{Stationaritätstests}
-Zur Überprüfung der statistischen Eigenschaften der Zeitreihen werden Augmented-Dickey-Fuller-Tests (ADF-Tests) durchgeführt. Ziel ist es zu prüfen, ob die betrachteten Variablen stationär sind und somit die Voraussetzungen für die nachfolgende Regressionsanalyse erfüllen.
+Zur Überprüfung der statistischen Eigenschaften der Zeitreihen werden Augmented-Dickey-Fuller-Tests (ADF-Tests) durchgeführt. Ziel ist es, festzustellen, ob die betrachteten Variablen stationär sind und somit die Voraussetzungen für eine valide Regressionsanalyse erfüllen.
 
 \begin{table}[ht]
     \centering
@@ -50,14 +50,20 @@ Zur Überprüfung der statistischen Eigenschaften der Zeitreihen werden Augmente
     \input{../src/tables/adf_results.tex}
 \end{table}
 
-Renditereihen wie von Bitcoin oder S\&P~500 sind in der Regel stationär, da sie um ein konstantes Niveau schwanken. Inflation oder Zinsen sind häufig nicht stationär da sie abhängig von globalen Ereignissen sind \citep{Enders2014}.
+Renditereihen wie die von Bitcoin oder dem S\&P~500 sind in der Regel stationär, da sie um einen konstanten Mittelwert schwanken. Makroökonomische Variablen wie Zinssätze oder Inflationsniveaus sind hingegen häufig nicht stationär, da sie langfristigen Trends und strukturellen Veränderungen unterliegen \citep{Enders2014}. Nicht-stationäre Variablen werden daher vor der Regressionsanalyse entsprechend transformiert.
 
 \section{Regressionsanalyse}
-Zur Untersuchung des Einflusses makroökonomischer Variablen auf die Renditen von Bitcoin wird ein lineares Regressionsmodell geschätzt. Die abhängige Variable ist die monatliche Rendite von Bitcoin, während ausgewählte makroökonomische Indikatoren als erklärende Variablen dienen.
-Das Regressionsmodell hat folgende Form:
+Zur Analyse des Einflusses makroökonomischer Variablen auf die Renditen von Bitcoin wird ein lineares Regressionsmodell geschätzt. Die abhängige Variable ist die monatliche logarithmische Rendite von Bitcoin. Als erklärende Variablen dienen die Renditen des S\&P~500, Veränderungen des US-Dollar-Index, die Inflationsrate, das Geldmengenwachstum sowie kurzfristige Änderungen des US-Leitzinses.
+Die Schätzung erfolgt mittels der Ordinary-Least-Squares-(OLS)-Methode. Dabei wird das lineare Regressionsmodell
 \[
-    r^{BTC}_t = \alpha + \beta_1 r^{SP500}_t + \beta_2 r^{USD}_t + \beta_3 \pi_t + \beta_4 \Delta M2_t + \beta_5 i_t + \varepsilon_t
+    Y = X\beta + \varepsilon
 \]
+zugrunde gelegt, wobei \(Y\) die abhängige Variable, \(X\) die Matrix der erklärenden Variablen, \(\beta\) der Vektor der zu schätzenden Koeffizienten und \(\varepsilon\) ein Störterm mit Erwartungswert Null ist. Die Parameterschätzung erfolgt durch Minimierung der Summe der quadrierten Residuen, wie in der Dokumentation des Statistikpakets \textit{statsmodels} beschrieben \citep{statsmodels_docs}.
+Das konkrete Regressionsmodell lautet:
+\[
+    r^{BTC}_t = \alpha + \beta_1 r^{SP500}_t + \beta_2 r^{USD}_t + \beta_3 \pi_t + \beta_4 \Delta M2_t + \beta_5 \Delta i_t + \varepsilon_t
+\]
+
 
 \begin{table}[ht]
     \centering
@@ -66,13 +72,10 @@ Das Regressionsmodell hat folgende Form:
     \input{../src/tables/regression_results.tex}
 \end{table}
 
-Die Ergebnisse der Regressionsanalyse sind in Tabelle~\ref{tab:regression} dargestellt.
+Die Regressionsergebnisse sind in Tabelle~\ref{tab:regression} dargestellt. Es zeigt sich ein deutlich positiver und hochsignifikanter Zusammenhang zwischen den Renditen des S\&P~500 und den Bitcoin-Renditen. Dies deutet darauf hin, dass Bitcoin im betrachteten Zeitraum überwiegend den Charakter einer Risikoanlage aufweist und insbesondere in Phasen steigender Aktienmärkte positive Renditen erzielt. Dieses Ergebnis steht im Einklang mit der bestehenden Literatur, die Bitcoin primär als spekulatives Finanzmarktinstrument und weniger als sicheren Hafen einordnet \citep{Baur2018,Corbet2018}.
+Für den US-Dollar-Index ergibt sich kein statistisch signifikanter Zusammenhang mit den Bitcoin-Renditen. Ebenso weisen weder das Geldmengenwachstum noch kurzfristige Zinsänderungen einen signifikanten Einfluss auf die Renditeentwicklung von Bitcoin auf. Diese Ergebnisse deuten darauf hin, dass makroökonomische Fundamentaldaten im untersuchten Zeitraum nur eine untergeordnete Rolle für die kurzfristige Preisentwicklung von Bitcoin gespielt haben.
+Die Inflationsrate weist einen negativen Koeffizienten auf, ist jedoch statistisch nicht signifikant. Somit liefern die Ergebnisse keine belastbare Evidenz für eine Funktion von Bitcoin als Inflationsschutz. Dieses Resultat steht im Einklang mit früheren Studien, die Bitcoin keine stabilen geldähnlichen Eigenschaften zuschreiben und seine Eignung als Absicherungsinstrument gegen Inflation kritisch bewerten \citep{Baur2018,Yermack2015}.
 
-Ein deutlich positiver und hochsignifikanter Zusammenhang zeigt sich zwischen den Renditen des S\&P~500 und den Bitcoin-Renditen. Bitcoin hat im betrachteten Zeitraum eher den Charakter einer Risikoanlage und entwickelt sich insbesondere in Phasen steigender Aktienmärkte positiv. Dieses Ergebnis steht im Einklang mit der bestehenden Literatur, die Bitcoin überwiegend als spekulatives Finanzmarktinstrument und weniger als sicheren Hafen einordnet \cite{Baur2018,Corbet2018}.
-
-Für den US-Dollar-Index ergibt sich hingegen kein statistisch signifikanter Zusammenhang mit den Bitcoin Renditen. Ebenso weisen weder das Geldmengenwachstum noch das Zinsniveau einen signifikanten Einfluss auf die Renditen von Bitcoin auf. Diese Erkenntnisse deuten darauf hin, dass die Größen im untersuchten Zeitraum nur eine untergeordnete Rolle für die kurzfristige Renditeentwicklung von Bitcoin gespielt haben.
-
-Die Inflationsrate zeigt einen negativen Zusammenhang mit den Bitcoin-Renditen, der jedoch lediglich auf dem 10\%-Signifikanzniveau schwach signifikant ist. Damit liefern die Ergebnisse keine eindeutige Evidenz für eine Funktion von Bitcoin als Inflationsschutz. Dieses Ergebnis stimmt mit der bestehenden Literatur überein, die Bitcoin keine stabilen geldähnlichen Eigenschaften zuschreiben und seine Eignung als Absicherungsinstrument gegen Inflation infrage stellen \cite{Baur2018,Yermack2015}.
 \newpage
 \subsubsection*{Robustheitsanalyse mit Ethereum}
 Zur Überprüfung der Robustheit der Ergebnisse wird die Regressionsanalyse zusätzlich für Ethereum durchgeführt.
@@ -82,6 +85,4 @@ Zur Überprüfung der Robustheit der Ergebnisse wird die Regressionsanalyse zus�
     \label{tab:regression_eth}
     \input{../src/tables/regression_results_eth.tex}
 \end{table}
-
-Die Ergebnisse bestätigen die Bitcoin Analyse. Der S\&P~500 hat einen signifikanten und positiven Einfluss auf die Renditen von Ethereum auf. Der geschätzte Koeffizient fällt dabei sogar höher aus als im Bitcoin Modell, was auf eine noch stärkere Einbindung von Ethereum in das allgemeine Marktgeschehen hindeutet.
-Inflation, Geldmengenwachstum, US-Dollar-Index und Zinssätze, zeigen keinen statistisch signifikanten Einfluss auf die Ethereum Renditen. Damit bleiben sowohl Richtung als auch Signifikanz der Koeffizienten über beide Kryptowährungen hinweg konsistent.
+Die Ergebnisse bestätigen die Analyse für Bitcoin. Auch für Ethereum zeigt sich ein signifikanter positiver Zusammenhang mit den Renditen des S\&P~500, wobei der geschätzte Koeffizient sogar höher ausfällt als im Bitcoin-Modell. Dies deutet auf eine noch stärkere Einbindung von Ethereum in das allgemeine Marktgeschehen hin. Die übrigen makroökonomischen Variablen – Inflation, Geldmengenwachstum, US-Dollar-Index und Zinsänderungen – weisen keinen statistisch signifikanten Einfluss auf die Ethereum-Renditen auf. Damit sind Richtung und Signifikanz der Koeffizienten über beide Kryptowährungen hinweg konsistent.
