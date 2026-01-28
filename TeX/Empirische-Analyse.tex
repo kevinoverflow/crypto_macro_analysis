@@ -11,9 +11,9 @@ Hier werden die aufbereiteten Daten deskriptiv ausgewertet um einen Überblick �
 
 \begin{table}[ht]
     \centering
-    \label{tab:deskriptiv}
-    \input{../src/tables/descriptive_statistics.tex} 
     \caption{Deskriptive Statistik der verwendeten Variablen}
+    \label{tab:deskriptiv}
+    \input{../src/tables/descriptive_statistics.tex}
 \end{table}
 
 Die Werte aus der Tabelle \ref{tab:deskriptiv} zeigen, eine höhere Volatilität von Kryptowährungen im Vergleich zu traditionellen Anlageklassen wie dem S\&P~500. Bitcoin und Ethereum weisen deutlich höhere Streuungen und Extremwerte auf, während US-Dollar, Inflation, Geldmengenwachstum und Zinssätze im Vergleich stabiler erscheinen.
@@ -45,11 +45,43 @@ Zur Überprüfung der statistischen Eigenschaften der Zeitreihen werden Augmente
 
 \begin{table}[ht]
     \centering
+    \caption{Ergebnisse der ADF-Tests}
     \label{tab:adf_results}
     \input{../src/tables/adf_results.tex}
-    \caption{Ergebnisse der ADF-Tests}
 \end{table}
 
 Renditereihen wie von Bitcoin oder S\&P~500 sind in der Regel stationär, da sie um ein konstantes Niveau schwanken. Inflation oder Zinsen sind häufig nicht stationär da sie abhängig von globalen Ereignissen sind \citep{Enders2014}.
 
 \section{Regressionsanalyse}
+Zur Untersuchung des Einflusses makroökonomischer Variablen auf die Renditen von Bitcoin wird ein lineares Regressionsmodell geschätzt. Die abhängige Variable ist die monatliche Rendite von Bitcoin, während ausgewählte makroökonomische Indikatoren als erklärende Variablen dienen.
+Das Regressionsmodell hat folgende Form:
+\[
+    r^{BTC}_t = \alpha + \beta_1 r^{SP500}_t + \beta_2 r^{USD}_t + \beta_3 \pi_t + \beta_4 \Delta M2_t + \beta_5 i_t + \varepsilon_t
+\]
+
+\begin{table}[ht]
+    \centering
+    \caption{Regressionsergebnisse}
+    \label{tab:regression}
+    \input{../src/tables/regression_results.tex}
+\end{table}
+
+Die Ergebnisse der Regressionsanalyse sind in Tabelle~\ref{tab:regression} dargestellt.
+
+Ein deutlich positiver und hochsignifikanter Zusammenhang zeigt sich zwischen den Renditen des S\&P~500 und den Bitcoin-Renditen. Bitcoin hat im betrachteten Zeitraum eher den Charakter einer Risikoanlage und entwickelt sich insbesondere in Phasen steigender Aktienmärkte positiv. Dieses Ergebnis steht im Einklang mit der bestehenden Literatur, die Bitcoin überwiegend als spekulatives Finanzmarktinstrument und weniger als sicheren Hafen einordnet \cite{Baur2018,Corbet2018}.
+
+Für den US-Dollar-Index ergibt sich hingegen kein statistisch signifikanter Zusammenhang mit den Bitcoin Renditen. Ebenso weisen weder das Geldmengenwachstum noch das Zinsniveau einen signifikanten Einfluss auf die Renditen von Bitcoin auf. Diese Erkenntnisse deuten darauf hin, dass die Größen im untersuchten Zeitraum nur eine untergeordnete Rolle für die kurzfristige Renditeentwicklung von Bitcoin gespielt haben.
+
+Die Inflationsrate zeigt einen negativen Zusammenhang mit den Bitcoin-Renditen, der jedoch lediglich auf dem 10\%-Signifikanzniveau schwach signifikant ist. Damit liefern die Ergebnisse keine eindeutige Evidenz für eine Funktion von Bitcoin als Inflationsschutz. Dieses Ergebnis stimmt mit der bestehenden Literatur überein, die Bitcoin keine stabilen geldähnlichen Eigenschaften zuschreiben und seine Eignung als Absicherungsinstrument gegen Inflation infrage stellen \cite{Baur2018,Yermack2015}.
+
+\subsubsection*{Robustheitsanalyse mit Ethereum}
+Zur Überprüfung der Robustheit der Ergebnisse wird die Regressionsanalyse zusätzlich für Ethereum durchgeführt.
+\begin{table}[ht]
+    \centering
+    \caption{Regressionsergebnisse für Ethereum}
+    \label{tab:regression_eth}
+    \input{../src/tables/regression_results_eth.tex}
+\end{table}
+
+Die Ergebnisse bestätigen die Bitcoin Analyse. Der S\&P~500 hat einen signifikanten und positiven Einfluss auf die Renditen von Ethereum auf. Der geschätzte Koeffizient fällt dabei sogar höher aus als im Bitcoin Modell, was auf eine noch stärkere Einbindung von Ethereum in das allgemeine Marktgeschehen hindeutet.
+Inflation, Geldmengenwachstum, US-Dollar-Index und Zinssätze, zeigen keinen statistisch signifikanten Einfluss auf die Ethereum Renditen. Damit bleiben sowohl Richtung als auch Signifikanz der Koeffizienten über beide Kryptowährungen hinweg konsistent.
