@@ -2,9 +2,7 @@
 
 Ziel der empirischen Analyse ist es, den Zusammenhang zwischen ausgewählten makroökonomischen Variablen und der Preisentwicklung von Bitcoin zu untersuchen. Aufbauend auf den im vorherigen Kapitel beschriebenen Daten und der Methodik erfolgt die empirische Auswertung schrittweise.
 
-Als erstes werden die betrachteten Zeitreihen mithilfe deskriptiver Statistik und grafischer Darstellungen analysiert. Anschließend werden die zeitlichen Eigenschaften der Daten untersucht, bevor mithilfe von Stationaritätstests die Voraussetzungen für die nachfolgende Regressionsanalyse geprüft werden. Abschließend werden Regressionsmodelle geschätzt, um den Einfluss makroökonomischer Faktoren auf Kryptowährungsrenditen zu quantifizieren.
-
-Um mögliche strukturelle Veränderungen im wirtschaftlichen und geldpolitischen Umfeld zu berücksichtigen, erfolgt die Analyse sowohl für den Gesamtzeitraum als auch getrennt nach vier Teilperioden: (i) eine Vorkrisenphase von Januar~2015 bis Dezember~2019, (ii) die Phase des pandemiebedingten Markteinbruchs im ersten Halbjahr~2020, (iii) eine Phase expansiver Geldpolitik von Juli~2020 bis Dezember~2021 sowie (iv) eine Phase steigender Inflation und geldpolitischer Straffung von Januar~2022 bis Dezember~2025. Dadurch kann untersucht werden, ob sich die Zusammenhänge zwischen makroökonomischen Variablen und Kryptowährungen in unterschiedlichen Marktphasen unterscheiden. Der Fokus liegt dabei auf Bitcoin, während Ethereum ergänzend als Robustheitstest herangezogen wird.
+Als erstes werden die betrachteten Zeitreihen mithilfe deskriptiver Statistik und grafischer Darstellungen analysiert. Anschließend werden die zeitlichen Eigenschaften der Daten untersucht, bevor mithilfe von Stationaritätstests die Voraussetzungen für die nachfolgende Regressionsanalyse geprüft werden. Abschließend werden Regressionsmodelle geschätzt, um den Einfluss makroökonomischer Faktoren auf Kryptowährungsrenditen zu quantifizieren. Der Fokus liegt dabei auf Bitcoin, während Ethereum ergänzend als Robustheitstest herangezogen wird.
 
 \section{Deskriptive Statistik}
 Hier werden die aufbereiteten Daten deskriptiv ausgewertet um einen Überblick über die grundlegenden Eigenschaften zu gewinnen und bezieht sich auf den gesamten Beobachtungszeitraum von Januar~2015 bis Dezember~2025. Die Daten basieren auf den monatlichen Renditen von Bitcoin, Ethereum und S\&P~500-Renditen sowie ausgewählten makroökonomischen Variablen wie Inflation, Zinsen, Geldmengenwachstum, US-Dollar-Index.
@@ -18,7 +16,7 @@ Hier werden die aufbereiteten Daten deskriptiv ausgewertet um einen Überblick �
 
 Die Werte aus der Tabelle \ref{tab:deskriptiv} zeigen, eine höhere Volatilität von Kryptowährungen im Vergleich zu traditionellen Anlageklassen wie dem S\&P~500. Bitcoin und Ethereum weisen deutlich höhere Streuungen und Extremwerte auf, während US-Dollar, Inflation, Geldmengenwachstum und Zinssätze im Vergleich stabiler erscheinen.
 
-
+\newpage
 \section{Zeitreihenanalyse}
 Die Zeitreihenanalyse untersucht die zeitliche Entwicklung verschiedener Variablen. Grafische Darstellungen helfen z.B. um Trends, strukturelle Änderungen oder auffälige Marktphasen zu finden.
 
@@ -30,6 +28,8 @@ Die Zeitreihenanalyse untersucht die zeitliche Entwicklung verschiedener Variabl
 \end{figure}
 
 Der Graph von \ref{fig:btc_vs_sp500_returns} zeigt die monatlichen logarithmischen Renditen von Bitcoin und dem S\&P~500 im Vergleich. Die Renditen von Bitcoin zeigen deutlich stärkere Schwankungen als die vom S\&P~500. Außerdem gibt es bei Bitcoin besonders hohe positive sowie negative Ausschläge. Im Gegensatz dazu verzeichnet der S\&P~500 überwiegend positive Renditen mit geringerer Volatilität. Dies deutet auf eine insgesamt hohe Volatilität von Bitcoin hin. Ein langfristiger Trend lässt sich in den dargestellten Renditen jedoch nicht erkennen.
+
+\newpage
 
 \begin{figure}[htbp]
     \centering
@@ -73,7 +73,7 @@ Ein deutlich positiver und hochsignifikanter Zusammenhang zeigt sich zwischen de
 Für den US-Dollar-Index ergibt sich hingegen kein statistisch signifikanter Zusammenhang mit den Bitcoin Renditen. Ebenso weisen weder das Geldmengenwachstum noch das Zinsniveau einen signifikanten Einfluss auf die Renditen von Bitcoin auf. Diese Erkenntnisse deuten darauf hin, dass die Größen im untersuchten Zeitraum nur eine untergeordnete Rolle für die kurzfristige Renditeentwicklung von Bitcoin gespielt haben.
 
 Die Inflationsrate zeigt einen negativen Zusammenhang mit den Bitcoin-Renditen, der jedoch lediglich auf dem 10\%-Signifikanzniveau schwach signifikant ist. Damit liefern die Ergebnisse keine eindeutige Evidenz für eine Funktion von Bitcoin als Inflationsschutz. Dieses Ergebnis stimmt mit der bestehenden Literatur überein, die Bitcoin keine stabilen geldähnlichen Eigenschaften zuschreiben und seine Eignung als Absicherungsinstrument gegen Inflation infrage stellen \cite{Baur2018,Yermack2015}.
-
+\newpage
 \subsubsection*{Robustheitsanalyse mit Ethereum}
 Zur Überprüfung der Robustheit der Ergebnisse wird die Regressionsanalyse zusätzlich für Ethereum durchgeführt.
 \begin{table}[ht]
